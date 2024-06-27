@@ -1,0 +1,39 @@
+Code for 4:1 Mux:
+module PRAC(out,s0,s1,i0,i1,i2,i3);
+input i0,i1,i2,i3,s0,s1;
+output reg out;
+always@(s0,s1,i0,i1,i2,i3)
+begin
+case({s0,s1})
+2'b00:out=i0;
+2'b01:out=i1;
+2'b10:out=i2;
+2'b11:out=i3;
+default:out=1'bx;
+endcase
+end
+endmodule
+
+
+Wrapped Code:
+module design_1_wrapper
+   (cout,
+    s0,
+    s1,
+    w);
+  output [3:0]cout;
+  input s0;
+  input s1;
+  input [3:0]w;
+
+  wire [3:0]cout;
+  wire s0;
+  wire s1;
+  wire [3:0]w;
+
+  design_1 design_1_i
+       (.cout(cout),
+        .s0(s0),
+        .s1(s1),
+        .w(w));
+endmodule
